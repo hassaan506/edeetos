@@ -220,7 +220,7 @@ if (searchInput) {
 }
 
 // ==========================================
-// 4. DATA WAREHOUSE (LAZY LOAD)
+// 4. DATA WAREHOUSE (TAXONOMY INDEX)
 // ==========================================
 const standardCourses = [
     'fcps_part1', 'fcps_part2', 'fcps_imm', 'mrcs_part1', 'mrcs_part2', 
@@ -241,60 +241,19 @@ const titles = {
 	'RWR': 'Residency', 'pretest_surgery': 'Pretest Surgery', 
 };
 
-let globalQuestionBank = {};
+let globalTaxonomy = null;
 
-async function loadTargetedFileToBank(fileKey) {
-    if (globalQuestionBank[fileKey]) return; 
-
-    const isBook = referenceBooks.includes(fileKey);
+async function fetchGlobalTaxonomy() {
+    if (globalTaxonomy) return;
     try {
-        let questions = [];
-        if (isBook) {
-            const res = await fetch(`Books/${fileKey}_questions.json`);
-            if (res.ok) questions = await res.json();
+        const res = await fetch('Data/global_taxonomy.json');
+        if (res.ok) {
+            globalTaxonomy = await res.json();
         } else {
-            const hierarchyRes = await fetch(`Data/${fileKey}_hierarchy.json`);
-            if (hierarchyRes.ok) {
-                const hierarchyData = await hierarchyRes.json();
-                const subjects = Object.keys(hierarchyData.subjects || {});
-                const sanitizeFilename = (name) => {
-                    if (!name) return "unknown";
-                    return String(name).toLowerCase().trim().replace(/[\\/*?:"<>|\s]+/g, '_').replace(/^_+|_+$/g, '');
-                };
-                const promises = subjects.map(async (subj) => {
-                    const subjClean = sanitizeFilename(subj);
-                    try {
-                        const res = await fetch(`Data/${fileKey}/metadata/${subjClean}.json`);
-                        if (res.ok) return await res.json();
-                    } catch (e) {}
-                    return [];
-                });
-                const results = await Promise.all(promises);
-                questions = results.flat();
-            }
+            globalTaxonomy = {};
         }
-
-        if (!globalQuestionBank[fileKey]) globalQuestionBank[fileKey] = {};
-
-        questions.forEach((q, index) => {
-            let fallbackPrefix = isBook ? `${fileKey}-` : '';
-            let qId = String(q.id || q.QuestionID || q['Question ID'] || q.ID || `${fallbackPrefix}q-${index + 1}`);
-
-            globalQuestionBank[fileKey][qId] = {
-                Subject: isBook ? (titles[fileKey] || q.Subject || q.subject) : (q.subject || q.Subject || 'Unknown'),
-                Chapter: q.chapter || q.Chapter || 'Unknown',
-                Topic: q.topic || q.Topic || 'Unknown'
-            };
-        });
-    } catch(e) {}
-}
-
-async function loadRequiredBanks(activeCourseFilter) {
-    if (activeCourseFilter === 'all') {
-        const allFiles = [...standardCourses, ...referenceBooks];
-        await Promise.all(allFiles.map(file => loadTargetedFileToBank(file)));
-    } else {
-        await loadTargetedFileToBank(activeCourseFilter);
+    } catch (e) {
+        globalTaxonomy = {};
     }
 }
 
@@ -314,7 +273,8 @@ async function displayDetailedReport(student, activeCourseFilter = 'all') {
         </div>
     `;
 
-	await loadRequiredBanks(activeCourseFilter);
+    // Fetch the single, lightweight index instead of 20+ massive encrypted question banks
+    await fetchGlobalTaxonomy();
 
     const uid = student.id;
     const fetchShard = async (folder, docName) => {
@@ -387,31 +347,16 @@ async function displayDetailedReport(student, activeCourseFilter = 'all') {
     const processedTopics = {};
 
     function processId(id, isMistake, bucket) {
-        let meta = null;
-        let isBook = false;
-        let sourceKey = bucket;
-
-        if (bucket === 'books') {
-            for (const book of referenceBooks) {
-                if (globalQuestionBank[book] && globalQuestionBank[book][id]) {
-                    meta = globalQuestionBank[book][id];
-                    isBook = true;
-                    sourceKey = book;
-                    break;
-                }
-            }
-        } else {
-            if (globalQuestionBank[bucket] && globalQuestionBank[bucket][id]) {
-                meta = globalQuestionBank[bucket][id];
-                isBook = false;
-                sourceKey = bucket;
-            }
-        }
-
+        // Look up the ID in the single taxonomy index instantly
+        const meta = globalTaxonomy[id];
+        const isBook = referenceBooks.includes(bucket);
+        const sourceKey = bucket;
         const sourceName = titles[sourceKey] || sourceKey || 'Unknown Source';
-        const subject = meta ? meta.Subject : 'Unknown Subject';
-        const chapter = meta ? meta.Chapter : 'Unknown System/Chapter';
-        const topic = meta ? meta.Topic : 'Pending Topic (Will be added)';
+        
+        const subject = meta ? meta.Subject : (isBook ? sourceName : 'Unknown Subject');
+        const chapter = meta ? meta.Chapter : 'Unknown Chapter';
+        const topic = meta ? meta.Topic : 'Unknown Topic';
+
         const key = `${subject}::${chapter}::${topic}::${sourceKey}`;
 
         if (!processedTopics[key]) {

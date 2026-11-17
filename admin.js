@@ -4,8 +4,8 @@ INDEX OF FEATURES
 =========================================
 1. INITIALIZATION & AUTH
 2. NAVIGATION & UI ROUTING
-3. DASHBOARD / DATABASE OVERVIEW (Fixed to use Hierarchy)
-4. QUESTION COMPILER & GITHUB PUSH (Fixed to chunk metadata)
+3. DASHBOARD / DATABASE OVERVIEW (Fixed to use CSV for Books)
+4. QUESTION COMPILER & GITHUB PUSH 
 5. USER MANAGER & MIGRATION
 6. STUDY ROOMS
 7. FRIEND CHALLENGES
@@ -15,8 +15,8 @@ INDEX OF FEATURES
 11. ACCESS KEYS
 12. PROMO CODES
 13. COURSE CHANGE REQUESTS
-14. REPORTED QUESTIONS (Fixed to use CSV parsing)
-15. CONTACT MESSAGES
+14. REPORTED QUESTIONS (Fixed to use CSV parsing for all sources)
+15. CONTACT MESSAGES (Fixed Delete Button)
 =========================================
 */
 
@@ -142,7 +142,7 @@ window.switchView = function(viewName) {
     if (routing[viewName]) routing[viewName]();
 };
 
-// === 3. DASHBOARD / DATABASE OVERVIEW (FIXED TO USE HIERARCHY) ===
+// === 3. DASHBOARD / DATABASE OVERVIEW ===
 async function calculateTotalQuestions() {
     const standardCourses = ['fcps_part1', 'fcps_part2', 'fcps_imm', 'mrcs_part1', 'mrcs_part2', 'mbbs_year1', 'mbbs_year2', 'mbbs_year3', 'mbbs_year4', 'mbbs_year5'];
     const referenceBooks = [
@@ -180,17 +180,20 @@ async function calculateTotalQuestions() {
         } catch (e) {}
     }
 
-    async function fetchAndCountBook(path, displayTitle, badgeColor, textColor, borderColor) {
+    async function fetchAndCountBook(file, displayTitle, badgeColor, textColor, borderColor) {
         try {
-            const response = await fetch(path, { cache: 'no-cache' });
+            // FIX: Use the raw CSV to count book questions, bypassing the encrypted JSON entirely
+            const response = await fetch(`Books/${file}.csv`, { cache: 'no-cache' });
             if (response.ok) {
-                const data = await response.json();
-                if (Array.isArray(data) && data.length > 0) {
-                    totalQuestions += data.length;
-                    breakdownHtml += `<span class="badge" style="background: ${badgeColor}; color: ${textColor}; border: 1px solid ${borderColor};">${displayTitle}: ${data.length} Qs</span>`;
+                const text = await response.text();
+                // Simple fast line count, subtract 1 for the header
+                const count = text.split('\n').filter(line => line.trim().length > 0).length - 1;
+                if (count > 0) {
+                    totalQuestions += count;
+                    breakdownHtml += `<span class="badge" style="background: ${badgeColor}; color: ${textColor}; border: 1px solid ${borderColor};">${displayTitle}: ${count} Qs</span>`;
                 }
             }
-        } catch (e) {}
+        } catch (e) { console.error(e); }
     }
 
     const coursePromises = standardCourses.map(course => {
@@ -202,7 +205,7 @@ async function calculateTotalQuestions() {
     breakdownHtml += `</div><div class="menu-label mb-1 mt-1">Reference Books</div><div class="flex-gap-1 mb-1" style="flex-wrap: wrap;">`;
     
     const bookPromises = referenceBooks.map(book => 
-        fetchAndCountBook(`Books/${book.file}_questions.json`, book.title, 'var(--primary)', '#fff', 'var(--primary-dark)')
+        fetchAndCountBook(book.file, book.title, 'var(--primary)', '#fff', 'var(--primary-dark)')
     );
     await Promise.all(bookPromises);
     breakdownHtml += `</div>`;
@@ -211,7 +214,7 @@ async function calculateTotalQuestions() {
     document.getElementById('database-breakdown-content').innerHTML = breakdownHtml;
 }
 
-// === 4. QUESTION COMPILER & GITHUB PUSH (FIXED METADATA CHUNKING) ===
+// === 4. QUESTION COMPILER & GITHUB PUSH ===
 document.getElementById('btn-save-new-q').onclick = () => {
     const qText = document.getElementById('add-q-txt').value.trim();
     if (!qText) return alert("Question text is required.");
@@ -489,7 +492,6 @@ let token = sessionStorage.getItem('edeetos_github_pat');
             if (isBook) {
                 await uploadFileToGitHub(paths.json, JSON.stringify(outQs, null, 4), commitMsg);
             } else {
-                // FIXED: Chunk metadata exactly how questions.js reads it
                 const metadataBySubject = {};
                 outQs.forEach(q => {
                     const subjClean = sanitizeFilename(q.subject || "Uncategorized");
@@ -1206,7 +1208,7 @@ async function fetchRequests() {
     });
 }
 
-// === 14. REPORTED QUESTIONS (FIXED TO CSV PARSING) ===
+// === 14. REPORTED QUESTIONS ===
 async function fetchReports() {
     if (unsubReps) return; 
     unsubReps = onSnapshot(collection(db, "reported_questions"), (qSnap) => {
@@ -1245,40 +1247,37 @@ async function fetchReports() {
                     
                     if (data.courseFile) {
                         const isBook = knownBooks.includes(data.courseFile);
-                        if (isBook) {
-                            const res = await fetch(`Books/${data.courseFile}_questions.json`, { cache: 'no-cache' });
-                            if (res.ok) qData = (await res.json()).find(q => String(q.id || q.QuestionID) === String(data.questionId));
-                        } else {
-                            // Fixed: Parse CSV directly to ensure we find the question regardless of what chunk it's in.
-                            const Papa = (await import('https://cdn.jsdelivr.net/npm/papaparse@5.4.1/+esm')).default;
-                            const csvRes = await fetch(`Data/${data.courseFile}.csv`, { cache: 'no-cache' });
-                            if (csvRes.ok) {
-                                const csvText = await csvRes.text();
-                                const rows = Papa.parse(csvText, { header: true }).data;
-                                const qRow = rows.find(r => String(r.QuestionID || r.id) === String(data.questionId));
-                                
-                                if (qRow) {
-                                    qData = {
-                                        id: qRow.QuestionID || qRow.id,
-                                        question: qRow.Question || qRow.question,
-                                        subject: qRow.Subject || qRow.subject,
-                                        chapter: qRow.Chapter || qRow.chapter,
-                                        topic: qRow.Topic || qRow.topic,
-                                        year: qRow.Year || qRow.year,
-                                        exams: qRow.Exam || qRow.exam || qRow.exams,
-                                        difficulty: qRow.Difficulty || qRow.difficulty,
-                                        correctAnswer: qRow.CorrectAnswer || qRow.correctAnswer,
-                                        explanation: qRow.Explanation || qRow.explanation,
-                                        hint: qRow.Hint || qRow.hint,
-                                        options: {
-                                            A: qRow.OptionA || qRow.optionA || qRow.optiona,
-                                            B: qRow.OptionB || qRow.optionB || qRow.optionb,
-                                            C: qRow.OptionC || qRow.optionC || qRow.optionc,
-                                            D: qRow.OptionD || qRow.optionD || qRow.optiond,
-                                            E: qRow.OptionE || qRow.optionE || qRow.optione
-                                        }
-                                    };
-                                }
+                        // FIX: Use CSV parsing for both courses AND books to avoid encrypted JSON crashes
+                        const Papa = (await import('https://cdn.jsdelivr.net/npm/papaparse@5.4.1/+esm')).default;
+                        const folder = isBook ? 'Books' : 'Data';
+                        const csvRes = await fetch(`${folder}/${data.courseFile}.csv`, { cache: 'no-cache' });
+                        
+                        if (csvRes.ok) {
+                            const csvText = await csvRes.text();
+                            const rows = Papa.parse(csvText, { header: true, skipEmptyLines: true }).data;
+                            const qRow = rows.find(r => String(r.QuestionID || r.id) === String(data.questionId));
+                            
+                            if (qRow) {
+                                qData = {
+                                    id: qRow.QuestionID || qRow.id,
+                                    question: qRow.Question || qRow.question,
+                                    subject: qRow.Subject || qRow.subject,
+                                    chapter: qRow.Chapter || qRow.chapter,
+                                    topic: qRow.Topic || qRow.topic,
+                                    year: qRow.Year || qRow.year,
+                                    exams: qRow.Exam || qRow.exam || qRow.exams,
+                                    difficulty: qRow.Difficulty || qRow.difficulty,
+                                    correctAnswer: qRow.CorrectAnswer || qRow.correctAnswer,
+                                    explanation: qRow.Explanation || qRow.explanation,
+                                    hint: qRow.Hint || qRow.hint,
+                                    options: {
+                                        A: qRow.OptionA || qRow.optionA || qRow.optiona,
+                                        B: qRow.OptionB || qRow.optionB || qRow.optionb,
+                                        C: qRow.OptionC || qRow.optionC || qRow.optionc,
+                                        D: qRow.OptionD || qRow.optionD || qRow.optiond,
+                                        E: qRow.OptionE || qRow.optionE || qRow.optione
+                                    }
+                                };
                             }
                         }
                     }
@@ -1362,7 +1361,8 @@ async function fetchMessages() {
             const data = d.data();
             const card = document.createElement('div');
             card.className = 'action-card';
-// Secure static HTML structure
+            
+            // Secure static HTML structure
             card.innerHTML = `
                 <div class="flex-between mb-05"><strong class="msg-name"></strong> <span class="text-muted font-sm tech-font msg-date"></span></div>
                 <div class="font-sm mb-15px tech-font" style="color: var(--primary);">
@@ -1389,7 +1389,24 @@ async function fetchMessages() {
             }
             
             card.querySelector('.message-content-box').textContent = data.message || '';
-            card.querySelector('.btn-action-del').onclick = () => deleteDoc(doc(db, 'contact_messages', d.id));
+            
+            // FIX: Proper async handling and confirmation for deleting messages
+            card.querySelector('.btn-action-del').onclick = async () => {
+                if (confirm("Are you sure you want to delete this message?")) {
+                    try {
+                        const btn = card.querySelector('.btn-action-del');
+                        btn.textContent = "Deleting...";
+                        btn.disabled = true;
+                        await deleteDoc(doc(db, 'contact_messages', d.id));
+                    } catch (e) {
+                        alert("Failed to delete message: " + e.message);
+                        const btn = card.querySelector('.btn-action-del');
+                        btn.textContent = "Delete Message";
+                        btn.disabled = false;
+                    }
+                }
+            };
+            
             list.appendChild(card);
         });
     });
