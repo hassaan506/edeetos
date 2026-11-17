@@ -211,10 +211,10 @@ body {
 }
 
 .version {
-    font-size: 1.05rem; /* Reduced from 1.25rem so it fits on one line */
+    font-size: 1.05rem; 
     font-weight: 800;
-    white-space: nowrap; /* Forces single line */
-    letter-spacing: -0.02em; /* Tightens the text slightly to save space */
+    letter-spacing: -0.02em; 
+    line-height: 1.4; /* Gives breathing room when text wraps */
 }
 
 .date-badge {
@@ -286,5 +286,13 @@ body {
 .z-alert { z-index: 9999; }
 
 @media (max-width: 768px) {
-    .bento-grid { grid-template-columns: 1fr; }
+    .bento-grid { 
+        grid-template-columns: 1fr; 
+    }
+    
+    .card-meta {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 12px;
+    }
 }
